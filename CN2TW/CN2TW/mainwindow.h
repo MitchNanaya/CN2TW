@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QFileDialog>
 #include <QFileSystemModel>
+#include <QTextCodec>
 #include <QDirModel>
 #include <QDebug>
 

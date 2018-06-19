@@ -52,7 +52,7 @@ public:
         textBrowser->setGeometry(QRect(510, 40, 381, 501));
         treeView = new QTreeView(centralWidget);
         treeView->setObjectName(QStringLiteral("treeView"));
-        treeView->setGeometry(QRect(10, 10, 200, 521));
+        treeView->setGeometry(QRect(10, 40, 200, 491));
         treeView->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
@@ -62,7 +62,7 @@ public:
         pushButton_loadText->setGeometry(QRect(430, 40, 71, 41));
         treeView_file = new QTreeView(centralWidget);
         treeView_file->setObjectName(QStringLiteral("treeView_file"));
-        treeView_file->setGeometry(QRect(220, 10, 200, 521));
+        treeView_file->setGeometry(QRect(220, 40, 200, 491));
         treeView_file->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         label_Path = new QLabel(centralWidget);
         label_Path->setObjectName(QStringLiteral("label_Path"));

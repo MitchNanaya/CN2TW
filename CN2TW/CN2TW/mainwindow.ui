@@ -28,9 +28,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>40</y>
       <width>200</width>
-      <height>521</height>
+      <height>491</height>
      </rect>
     </property>
     <property name="horizontalScrollBarPolicy">
@@ -67,9 +67,9 @@
     <property name="geometry">
      <rect>
       <x>220</x>
-      <y>10</y>
+      <y>40</y>
       <width>200</width>
-      <height>521</height>
+      <height>491</height>
      </rect>
     </property>
     <property name="horizontalScrollBarPolicy">

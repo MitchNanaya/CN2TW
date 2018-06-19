@@ -43,6 +43,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     QList<QString> path_list;
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
     int numRows = fileModel->rowCount(rootIndex);
     for (int row = 0; row < numRows; ++row) {
         QModelIndex childIndex = fileModel->index(row, 0, rootIndex);
@@ -53,7 +54,7 @@ void MainWindow::on_pushButton_clicked()
             QFile file(rootPath+"/"+path);
             QTextStream in(&file);
             if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
-                QString lineAll = in.readAll();
+                QString lineAll = codec->toUnicode(file.readAll());
                 ui->textBrowser->append(lineAll);
             }
         }
@@ -64,6 +65,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_treeView_clicked(const QModelIndex &index)
 {
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");
     rootPath = dirModel->filePath(index);
     rootIndex = fileModel->setRootPath(rootPath);
     ui->treeView_file->setRootIndex(fileModel->index(rootPath));
@@ -71,10 +73,10 @@ void MainWindow::on_treeView_clicked(const QModelIndex &index)
     QFile file(rootPath);
     QTextStream in(&file);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
-        QString lineAll = in.readAll();
+        QString lineAll = codec->toUnicode(file.readAll());
         ui->textBrowser->setText(lineAll);
-
     }
+    file.close();
 }
 
 void MainWindow::on_pushButton_loadText_clicked()
@@ -88,11 +90,11 @@ void MainWindow::on_pushButton_loadText_clicked()
         if(!fileModel->isDir(childIndex)){
             fpath = fileModel->data(childIndex).toString();
             path_list.append(fpath);
-            qDebug()<< path+fpath;
+            qDebug()<< path+"/"+fpath;
             break;
         }
     }
-    QFile file(path+fpath);
+    QFile file(path+"/"+fpath);
     QTextStream in(&file);
     if (file.open(QIODevice::ReadOnly | QIODevice::Text)){
         QString lineAll = in.readAll();
